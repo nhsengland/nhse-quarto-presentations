@@ -1,0 +1,181 @@
+/* nhs-theme.scss */
+
+// This file defines a custom theme for Quarto Reveal.js presentations,
+// tailored for NHS England branding, and structured according to Quarto's
+// recommended SCSS theme conventions.
+
+/*-- scss:defaults --*/
+
+// Define NHS England Brand Colors based on official guidelines
+// These variables can be easily customized or overridden.
+$nhs-blue: #005EB8;
+$nhs-light-blue: #41B6E6;
+$nhs-dark-blue: #003087;
+$nhs-green: #007F3B;
+$nhs-red: #DA291C;
+$nhs-yellow: #FFEB3B;
+$nhs-grey: #425563; // Often used for text and secondary elements
+$nhs-white: #FFFFFF;
+$nhs-off-white: #F0F4F5; // A softer background color for readability
+
+// Font stack - NHS uses Frutiger, but Arial/Helvetica are widely available
+// and good web-safe alternatives that maintain a similar clean aesthetic.
+// $nhs-font-stack: "Consolas", sans-serif;
+$nhs-font-stack: "Frutiger", "Arial", "Helvetica Neue", "Helvetica", sans-serif;
+
+// Default text color and background for the entire presentation
+// These override Reveal.js's default variables for body text and background.
+$body-color: $nhs-grey;
+$body-background-color: $nhs-off-white;
+
+// Default heading colors
+$h1-color: $nhs-blue;
+$h2-color: $nhs-dark-blue;
+$h3-color: $nhs-grey;
+$h4-color: $nhs-grey;
+$h5-color: $nhs-grey;
+$h6-color: $nhs-grey;
+
+// Link colors
+$link-color: $nhs-blue;
+$link-hover-color: $nhs-dark-blue;
+
+// Progress bar color
+$progress-bar-color: $nhs-yellow;;
+
+// Navigation control colors
+$controls-color: $nhs-blue;
+$controls-color-hover: $nhs-dark-blue;
+
+// Slide number color
+$slide-number-color: $nhs-grey;
+
+/*-- scss:rules --*/
+
+// Global styles for the Reveal.js presentation container.
+// The `.reveal` class is the main wrapper.
+.reveal {
+    font-family: $nhs-font-stack;
+    color: $body-color;
+    background-color: $body-background-color;
+
+    // Override default styles for headings
+    h1, h2, h3, h4, h5, h6 {
+        color: $h1-color; // Default to H1 color; can be overridden per heading level
+    }
+
+    // Links
+    a {
+        color: $link-color;
+        &:hover {
+            color: $link-hover-color;
+        }
+    }
+
+    // Progress bar
+    .progress {
+        background-color: $progress-bar-color;
+        height: 0.125em !important;
+        }
+
+    // Navigation controls
+    .controls {
+        color: $controls-color;
+        &:hover {
+            color: $controls-color-hover;
+        }
+    }
+
+    // Slide numbers
+    .slide-number {
+        color: $slide-number-color;
+    }
+
+    // Simple font sizing that works everywhere
+    .slides section h1 { font-size: 1.6em; }
+    .slides section h2 { font-size: 1.3em; }
+    .slides section h3 { font-size: 1.1em; }
+    .slides section p { font-size: 0.8em; }
+    
+    // Adjust list spacing for better content density
+    .slides section ul, .slides section ol {
+        line-height: 1.3;
+        padding-left: 1.5em; // Give enough space for list markers
+        margin-left: 0;
+    }
+    
+    .slides section li {
+        margin-bottom: 0.2em;
+        font-size: 0.8em;
+    }
+
+    .footer > * {
+        background-color: $nhs-off-white;
+        color: $nhs-dark-blue;
+        display: block;
+        position: fixed;
+        padding-bottom: 12px;
+        padding-top: 12px;
+        bottom: 0px !important; // Makes footer div flush with bottom of slide
+        width: 100%;
+        z-index: 2 !important; // Sets the footer div further down the z-index
+    }
+
+    .slide-logo {
+        margin-bottom: 6px !important; // Lowers logo more in line with rest of footer
+        z-index: 5 !important; // Keeps logo above footer div
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        padding: 10px;
+        // max-height: calc(100vh - 120px);
+        overflow: visible; // Changed from hidden to visible to prevent cutoff
+    }
+
+    .one-column-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .two-column-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .four-column-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .regular-grid {
+        grid-auto-rows: 1fr;
+    }
+
+    .cell {
+        background: $nhs-white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 94, 184, 0.1);
+            border-color: $nhs-blue;
+        }
+
+        strong {
+            font-size: 0.9em;
+            display: block;
+            margin-bottom: 8px;
+            color: $nhs-dark-blue;
+        }
+
+        p {
+            font-size: 0.7em;
+            line-height: 1.3;
+            margin: 0;
+        }
+    }
+
+}

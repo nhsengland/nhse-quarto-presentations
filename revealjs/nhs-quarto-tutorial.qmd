@@ -1,0 +1,600 @@
+---
+title: "NHS Quarto Reveal.js Tutorial"
+subtitle: "Building Presentations with NHS Theme Classes"
+author: "Tutorial Guide"
+format:
+    revealjs:
+        theme: nhs-theme.scss # Link to your custom theme file
+        logo: nhse-logo.png
+        footer: "NHS Theme Tutorial"
+        slide-number: true
+        show-slide-number: all
+        scroll-view: true
+        scrollable: true
+editor_options:
+    chunk_output_type: console
+---
+
+## Welcome to the NHS Theme Tutorial {background="#005EB8" .title-slide}
+
+Learn to create professional NHS-branded presentations using Quarto Reveal.js and the NHS theme.
+
+---
+
+## What You'll Learn
+
+This tutorial covers:
+
+-   **NHS Theme Setup:** How to configure the theme file
+-   **Color Variables:** Using NHS brand colors effectively
+-   **Grid Layouts:** Creating responsive card layouts
+-   **Typography:** Working with NHS-styled headings and text
+-   **Interactive Elements:** Fragments and animations
+
+---
+
+## Getting Started
+
+### Basic Setup
+
+```{yaml}
+---
+title: "Your Presentation Title"
+format:
+    revealjs:
+        theme: nhs-theme.scss
+        logo: nhse-logo.png
+        footer: "Your Footer Text"
+        slide-number: true
+        incremental: true
+        slide-number: true
+        show-slide-number: all
+---
+```
+
+The `nhs-theme.scss` file provides NHS England branding with official colors and typography.
+
+---
+
+## NHS Brand Colors {.scrollable}
+
+The theme includes these official NHS colors:
+
+- **NHS Blue:** `#005EB8` - Primary brand color
+- **NHS Light Blue:** `#41B6E6` - Secondary accent
+- **NHS Dark Blue:** `#003087` - Deep accent
+- **NHS Green:** `#007F3B` - Success/positive
+- **NHS Red:** `#DA291C` - Alert/warning
+- **NHS Grey:** `#425563` - Body text
+- **NHS Off-White:** `#F0F4F5` - Background
+
+Use background colors: `{background="#005EB8"}` in slide headers.
+
+# Typography Hierarchy
+
+# Heading Level 1 (1.6em)
+
+
+## Heading Level 2 (1.3em)  
+### Heading Level 3 (1.1em)
+
+Regular paragraph text (0.8em) with proper line spacing for readability.
+
+- **Bold text** for emphasis
+- *Italic text* for subtle emphasis
+- [Links](#) styled in NHS Blue
+
+---
+
+## Grid Container Basics
+
+The `.grid-container` class creates flexible layouts:
+
+```{markdown}
+::: {.grid-container .one-column-grid .regular-grid}
+::: {.cell}
+Content here
+:::
+:::
+```
+
+**Available grid classes:**
+- `.one-column-grid` - Single column
+- `.two-column-grid` - Two columns  
+- `.four-column-grid` - Four columns
+- `.regular-grid` (default) - Three columns
+
+---
+
+## Single Column Layout
+
+::: {.grid-container .one-column-grid .regular-grid}
+
+::: {.cell}
+**Tutorial Tip**
+
+Single column layouts work well for detailed explanations or when you want content to span the full width. Perfect for code examples or detailed descriptions.
+:::
+
+:::
+
+**Code:**
+```{markdown}
+::: {.grid-container .one-column-grid .regular-grid}
+::: {.cell}
+Your content here
+:::
+:::
+```
+
+---
+
+## Two Column Layout
+
+::: {.grid-container .two-column-grid .regular-grid}
+
+::: {.cell}
+**Left Column**
+
+Great for comparing two concepts side by side or showing before/after examples.
+:::
+
+::: {.cell}
+**Right Column**
+
+Each cell automatically gets equal width and height for balanced visual presentation.
+:::
+
+:::
+
+**Code:**
+```{markdown}
+::: {.grid-container .two-column-grid .regular-grid}
+::: {.cell}
+Left content
+:::
+::: {.cell}
+Right content
+:::
+:::
+```
+
+---
+
+## Four Column Layout
+
+::: {.grid-container .four-column-grid .regular-grid}
+
+::: {.cell}
+**Quarter 1**
+
+Compact layout for displaying multiple small items.
+:::
+
+::: {.cell}
+**Quarter 2**
+
+Perfect for statistics or key metrics.
+:::
+
+::: {.cell}
+**Quarter 3**
+
+Each cell maintains equal proportions.
+:::
+
+::: {.cell}
+**Quarter 4**
+
+Ideal for feature highlights.
+:::
+
+:::
+
+**Best for:** Statistics, features, team members, or any grid of 4-12 items.
+
+---
+
+## Default Three Column Grid
+
+::: {.grid-container .regular-grid}
+
+::: {.cell}
+**Column 1**
+
+The default grid layout uses three columns when no specific grid class is applied.
+:::
+
+::: {.cell}
+**Column 2**
+
+This provides a balanced layout for most content types.
+:::
+
+::: {.cell}
+**Column 3**
+
+Perfect for displaying features, benefits, or process steps.
+:::
+
+:::
+
+**Code:**
+```{markdown}
+::: {.grid-container .regular-grid}
+::: {.cell}
+Content
+:::
+:::
+```
+
+---
+
+## Fragment Animations
+
+Add `.fragment` to cells for sequential reveals:
+
+::: {.grid-container .two-column-grid .regular-grid}
+
+::: {.cell .fragment}
+**Step 1**
+
+This appears first when you advance the slide.
+:::
+
+::: {.cell .fragment}
+**Step 2**
+
+This appears second, creating a build-up effect.
+:::
+
+:::
+
+**Code:**
+```{markdown}
+::: {.cell .fragment}
+Content appears on click
+:::
+```
+
+---
+
+## Multiple Fragment Animations
+
+For multiple elements to appear sequentially, add `.fragment` to each element:
+
+::: {.grid-container .two-column-grid .regular-grid}
+
+::: {.cell .fragment}
+**Sequential Step 1**
+
+Each cell needs its own .fragment class for sequential reveals.
+:::
+
+::: {.cell .fragment}
+**Sequential Step 2**
+
+This creates a build-up effect as you advance through the slide.
+:::
+
+:::
+
+:::{.fragment}
+**Code:**
+```{markdown}
+::: {.grid-container .two-column-grid .regular-grid}
+::: {.cell .fragment}
+First to appear
+:::
+::: {.cell .fragment}
+Second to appear
+:::
+:::
+```
+:::
+
+:::{.fragment}
+**Note:** `.incremental` only works on list - use `.fragment` on individual elements.
+:::
+---
+
+## List Incremental Animations
+
+The `.incremental` class works perfectly with regular lists:
+
+### Example with Incremental List
+
+::: {.incremental}
+- **First Point:** This appears first when you advance the slide
+- **Second Point:** This appears second automatically
+- **Third Point:** Each list item reveals sequentially
+- **Fourth Point:** No need to add .fragment to individual items
+:::
+
+### Regular List (No Incremental)
+
+- All items appear at once
+- No sequential reveal
+- Standard list behavior
+
+**Code:**
+```{markdown}
+### My List
+::: {.incremental}
+- Item 1
+- Item 2  
+- Item 3
+:::
+```
+
+---
+
+## Cell Hover Effects
+
+Cells include built-in hover animations:
+
+::: {.grid-container .regular-grid}
+
+::: {.cell}
+**Hover Me**
+
+Cells lift up and show a blue shadow on hover for interactive feedback.
+:::
+
+::: {.cell}
+**Interactive Design**
+
+The hover effect includes a subtle transform and NHS blue accent.
+:::
+
+::: {.cell}
+**Professional Touch**
+
+These micro-interactions enhance user engagement.
+:::
+
+:::
+
+Try hovering over any cell to see the lift effect!
+
+---
+
+## Combining Multiple Techniques
+
+::: {.grid-container .four-column-grid .regular-grid}
+
+::: {.cell .fragment}
+**Planning**
+
+Start with your content structure and choose appropriate grid layout.
+:::
+
+::: {.cell .fragment}
+**Styling**
+
+Apply NHS theme classes for consistent branding.
+:::
+
+::: {.cell .fragment}
+**Animation**
+
+Add fragments to individual cells for engagement.
+:::
+
+::: {.cell .fragment}
+**Testing**
+
+Preview your presentation to ensure smooth flow.
+:::
+
+:::
+
+This example combines four-column grid + individual cell fragments.
+
+---
+
+## Advanced Layout Example
+
+::: {.grid-container .regular-grid}
+
+::: {.cell .fragment}
+**Data Collection**
+
+Gather requirements and content from stakeholders.
+:::
+
+::: {.cell .fragment}
+**Design Phase**
+
+Create wireframes using NHS brand guidelines.
+:::
+
+::: {.cell .fragment}
+**Development**
+
+Build slides with Quarto and NHS theme classes.
+:::
+
+::: {.cell .fragment}
+**Review Cycle**
+
+Test presentation flow and gather feedback.
+:::
+
+::: {.cell .fragment}
+**Deployment**
+
+Publish final presentation for target audience.
+:::
+
+::: {.cell .fragment}
+**Maintenance**
+
+Update content and maintain brand consistency.
+:::
+
+:::
+
+Six-cell layout with individual fragments for process flows or project phases.
+
+---
+
+## Large Grid Example
+
+::: {.grid-container .four-column-grid}
+
+::: {.cell .fragment}
+**Research**
+
+User needs analysis
+:::
+
+::: {.cell .fragment}
+**Strategy**
+
+Content planning
+:::
+
+::: {.cell .fragment}
+**Design**
+
+Visual mockups
+:::
+
+::: {.cell .fragment}
+**Development**
+
+Code implementation
+:::
+
+::: {.cell .fragment}
+**Testing**
+
+Quality assurance
+:::
+
+::: {.cell .fragment}
+**Launch**
+
+Go-live process
+:::
+
+::: {.cell .fragment}
+**Monitor**
+
+Performance tracking
+:::
+
+::: {.cell .fragment}
+**Optimize**
+
+Continuous improvement
+:::
+
+:::
+
+Eight-cell grid with sequential fragments showing project lifecycle phases.
+
+---
+
+## Scrollable Content {.scrollable}
+
+For slides with lots of content, add `.scrollable` to the slide header:
+
+### Complete NHS Color Palette
+
+- **Primary Blues:**
+  - NHS Blue: #005EB8 (main brand)
+  - NHS Light Blue: #41B6E6 (secondary)
+  - NHS Dark Blue: #003087 (accent)
+
+- **Supporting Colors:**
+  - NHS Green: #007F3B (success)
+  - NHS Red: #DA291C (alerts)
+  - NHS Yellow: #FFEB3B (highlights)
+
+- **Neutral Colors:**
+  - NHS Grey: #425563 (text)
+  - NHS White: #FFFFFF (backgrounds)
+  - NHS Off-White: #F0F4F5 (soft backgrounds)
+
+### Usage Guidelines
+
+Always use official NHS colors to maintain brand consistency across all presentations and materials.
+
+---
+
+## Best Practices
+
+::: {.grid-container .regular-grid}
+
+::: {.cell}
+**Content First**
+
+Plan your content structure before choosing grid layouts. Content should drive design decisions.
+:::
+
+::: {.cell}
+**Consistent Spacing**
+
+Use the built-in cell padding and margins for visual consistency throughout your presentation.
+:::
+
+::: {.cell}
+**Accessibility**
+
+NHS theme colors meet accessibility standards. Maintain good contrast ratios in your content.
+:::
+
+:::
+
+**Remember:** Less is more - don't overcrowd slides with too many cells or animations.
+
+---
+
+## Quick Reference
+
+### Essential Classes
+
+- **Grid Containers:** `.grid-container`
+- **Column Layouts:** `.one-column-grid`, `.two-column-grid`, `.four-column-grid`
+- **Cell Styling:** `.cell`
+- **Animations:** `.fragment` (apply to individual cells), `.incremental` (apply to lists)
+- **Special Slides:** `.scrollable`, `.title-slide`
+
+**Important:** `.incremental` works on lists, not grid containers. Use `.fragment` on individual cells instead.
+
+### YAML Header Settings
+
+```yaml
+theme: nhs-theme.scss
+logo: nhse-logo.png
+footer: "Your text here"
+slide-number: true
+incremental: true
+```
+
+---
+
+## Your Turn!
+
+Now you have all the tools to create professional NHS-branded presentations:
+
+1. **Start** with the YAML header configuration
+2. **Choose** appropriate grid layouts for your content
+3. **Add** NHS styling with theme classes
+4. **Enhance** with fragments on individual cells for animations
+5. **Test** your presentation flow
+
+Happy presenting with the NHS theme!
+
+---
+
+## Resources
+
+- **NHS Brand Guidelines:** Official NHS England brand standards
+- **Quarto Documentation:** [quarto.org](https://quarto.org)
+- **Reveal.js Features:** Advanced presentation capabilities
+- **SCSS Customization:** Modify the theme for your needs
+
+For questions or support, consult the NHS digital design system documentation.

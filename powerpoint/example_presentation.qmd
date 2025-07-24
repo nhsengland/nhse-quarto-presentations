@@ -1,0 +1,370 @@
+---
+title: "PowerPoint Layout Examples"
+subtitle: "Demonstrating Standard Slide Layouts in Quarto"
+author: "Joseph Wilson"
+reference-doc: template.pptx
+format: pptx
+slide-number: true
+---
+
+## Title Slides
+
+Title slides are automatically generated using date, author, and title(s) metadata fields (if present).
+
+You can also declare the `reference-doc` to use as the template for this presentation in the metadata field.
+
+**Code**
+
+```{markdown}
+---
+title: "PowerPoint Layout Examples"
+subtitle: "Demonstrating Standard Slide Layouts in Quarto"
+author: "Joseph Wilson"
+reference-doc: template.pptx
+---
+```
+
+---
+
+## Section Headers
+
+These slides help to organise and breakup  your presentation. You create these with a H1 heading:
+
+**Code**
+
+```{markdown}
+# Section Header Layout
+```
+
+---
+
+# Section Header Layout
+
+---
+
+## Title and Content Layout
+
+This is the most common slide layout - level 2 header (##) creates the slide title.
+
+The content area can include:
+
+- Bullet points like these
+- **Bold** and *italic* text
+- `Code snippets`
+- Regular paragraphs of text
+
+This layout works great for most presentation content and are used for all slides that do not match the criteria for another layout.
+
+---
+
+## Title and Content - Tables
+
+Tables can be easy to add using the markdown table formatting:
+
+**Code**
+
+```{markdown}
+| Feature | Option A | Option B |
+|---------|----------|----------|
+| Cost | $100 | $150 |
+| Speed | Fast | Very Fast |
+| Quality | Good | Excellent |
+| Support | Email | Phone + Email |
+```
+
+---
+
+## Title and Content - Tables
+
+| Feature | Option A | Option B |
+|---------|----------|----------|
+| Cost | $100 | $150 |
+| Speed | Fast | Very Fast |
+| Quality | Good | Excellent |
+| Support | Email | Phone + Email |
+
+---
+
+## Title and Content - Images
+
+Images can easily be inserted into your presentations with and without captions
+
+### Code
+
+With a caption:
+```{markdown}
+![Example image with a caption](example_image.jpg)
+```
+Without a caption:
+```{markdown}
+![](example_image.jpg)
+```
+
+---
+
+## Title and Content - Images (Captioned)
+
+![Example image with a caption](example_image.jpg)
+
+---
+
+## Title and Content - Images (Un-captioned)
+
+![](example_image.jpg)
+
+---
+
+## Title and Content - Numbered Lists
+
+### Code
+```{markdown}
+1. first
+2. second
+3. third
+```
+
+---
+
+## Title and Content - Numbered Lists
+
+1. This thing should come first
+2. Then this!
+3. Finally this...
+4. ... or maybe this!
+
+---
+
+## Title and Content - Unordered Lists
+
+### Code
+```{markdown}
+- first
+- second
+- third
+```
+
+---
+
+## Title and Content - Unordered Lists
+
+- These can help break up your points
+- Make them easy to digest
+- And keep your audience focused!
+
+---
+
+## Two Content Layout
+
+This layout is used for two-column slides and can be created using the `.column` div class:
+
+**Code**
+
+```{markdown}
+:::: {.columns}
+::: {.column}
+Column 1 Content
+:::
+::: {.column}
+Column 2 Content
+:::
+:::: <!-- end columns -->
+```
+
+---
+
+## Two Content Layout
+
+:::: {.columns}
+
+::: {.column}
+### Left Content
+
+- First point
+- Second point
+- Third point
+
+You can put any content here including text, lists, or even simple tables.
+:::
+
+::: {.column}
+### Right Content
+
+- Different information
+- Contrasting points
+- Additional details
+
+The two-column layout is useful for comparisons or complementary information.
+:::
+
+::::
+
+---
+
+## Comparison Layout
+
+This layout is used instead of "Two-Content" layouts but for any two-column slides in which *both* columns contain text followed by non-text (e.g. an image or a table)
+
+---
+
+## Comparison Layout- Code
+
+```{markdown}
+:::: {.columns}
+::: {.column}
+### Content A
+![](example_image.jpg)
+:::
+::: {.column}
+### Content B
+| Feature  | Content B |
+|----------|-----------|
+| Hello    | World     |
+:::
+::::
+```
+
+---
+
+## Comparison Layout
+
+:::: {.columns}
+
+::: {.column}
+### Content A
+
+![](example_image.jpg)
+
+:::
+
+::: {.column}
+### Content B
+
+| Feature  | Content B |
+|----------|-----------|
+| Price    | $200      |
+| Warranty | 3 years   |
+| Support  | 24/7      |
+
+:::
+
+::::
+
+---
+
+## Content with Caption
+
+This layout is used for any non-two-column slides which contain text followed by non-text (e.g an image or a table)
+
+### Code
+```{markdown}
+Hmm looks like a shady character is coding here!
+
+![](example_image.jpg)
+```
+
+---
+
+## Content with Caption
+
+Hmm looks like a shady character is coding here!
+
+![](example_image.jpg)
+
+---
+
+## Blank Layout
+
+You can create a blank slide by having minimal content.
+
+Sometimes you just need space for discussion or to insert content manually in PowerPoint later.
+
+### Code
+```{markdown}
+---
+
+&nbsp; <!--This is a non-breaking space and ensure that a blank slide is created-->
+
+---
+```
+
+---
+
+&nbsp;
+
+---
+
+## Simple Python Chart
+
+### Code
+```{python}
+#| echo: true
+#| eval: false
+
+import matplotlib.pyplot as plt
+
+# Simple data
+months = ['Jan', 'Feb', 'Mar', 'Apr']
+sales = [20, 25, 30, 28]
+
+# Create chart
+plt.figure(figsize=(6, 4))
+plt.bar(months, sales, color='steelblue')
+plt.title('Monthly Sales')
+plt.ylabel('Sales (K)')
+plt.show()
+```
+
+---
+
+## Chart Output
+
+```{python}
+#| echo: false
+#| eval: true
+
+import matplotlib.pyplot as plt
+
+# Simple data
+months = ['Jan', 'Feb', 'Mar', 'Apr']
+sales = [20, 25, 30, 28]
+
+# Create chart
+plt.figure(figsize=(6, 4))
+plt.bar(months, sales, color='steelblue')
+plt.title('Monthly Sales')
+plt.ylabel('Sales (K)')
+plt.show()
+```
+
+---
+
+## Final Slides
+
+We have to workaround Quarto's and Pandoc's limitations to create a nice final slide.
+
+We do this by setting an empty slide to have a custom background image, which is the NHSE Final Slide.
+
+### Code
+```{markdown}
+## {background-image="nhs_final_slide.png"}
+```
+
+---
+
+## Summary - What We've Covered
+
+In this presentation, we demonstrated how to:
+
+- Use metadata and templates to control slide appearance
+- Create title slides, section headers, and blank slides
+- Format content with bullet points, numbered lists, and tables
+- Build two-column and comparison layouts for side-by-side content
+- Add images and captions to enhance your slides
+- Embed and display Python code and charts directly in your presentation
+
+These examples highlight the flexibility of Quarto for building professional PowerPoint presentations.
+
+---
+
+## {background-image="nhs_final_slide.png"}
+
